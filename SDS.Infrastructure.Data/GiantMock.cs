@@ -1,9 +1,5 @@
 using SDS.Core.Domain_Service;
 using SDS.Core.Entity;
-using SDS.Infrastructure.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SDS.Infrastructure.Data
 {

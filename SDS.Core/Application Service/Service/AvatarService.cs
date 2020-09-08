@@ -3,7 +3,7 @@ using SDS.Core.Entity;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
+
 
 namespace SDS.Core.Application_Service.Service
 {
@@ -11,7 +11,6 @@ namespace SDS.Core.Application_Service.Service
     {
         private readonly IAvatarRepository _aRepo;
         public static IEnumerable<Avatar> avatarList;
-
 
         public AvatarService(IAvatarRepository aRepo)
         {
@@ -41,10 +40,7 @@ namespace SDS.Core.Application_Service.Service
                 throw new InvalidDataException("You need to put in atleast 1 letter!");
             }
             return _aRepo.Create(avatar);
-
         }
-
-        
 
         public Avatar Update(Avatar avatar)
         {
@@ -53,11 +49,10 @@ namespace SDS.Core.Application_Service.Service
                 throw new InvalidDataException("Name must be atleast 1 char");
             }
 
-            if (avatar == null) // Error
+            if (avatar == null) 
             {
                 throw new InvalidDataException("Did not find avatar with id: " + avatar.Id);
             }
-
             return _aRepo.Update(avatar);
         }
 
@@ -65,16 +60,15 @@ namespace SDS.Core.Application_Service.Service
         {
             return _aRepo.GetAllAvatars();
         }
-
         public List<Avatar> GetAvatarsSortByPrice()
         {
             List<Avatar> avatars = GetAvatars();
-            List<Avatar> avatarsToSort = new List<Avatar>(); // kopi
+            List<Avatar> avatarsToSort = new List<Avatar>(); 
 
             foreach(Avatar a in avatars) {
                 avatarsToSort.Add(a);
             }
-            avatarsToSort.Sort((avatar1, avatar2) => avatar1.Price.CompareTo(avatar2.Price)); /////////////
+            avatarsToSort.Sort((avatar1, avatar2) => avatar1.Price.CompareTo(avatar2.Price)); 
             
             return avatarsToSort;
         }
@@ -111,19 +105,14 @@ namespace SDS.Core.Application_Service.Service
                 DBAvatar.Birthday = avatarUpdate.Birthday;
                 DBAvatar.SoldDate = avatarUpdate.SoldDate;
                 DBAvatar.PreviousOwner = avatarUpdate.PreviousOwner;
-                DBAvatar.Price = avatarUpdate.Price;
-            
+                DBAvatar.Price = avatarUpdate.Price;          
             }
-
-            return DBAvatar;
-            
+            return DBAvatar;           
         }
         
         public Avatar ReadById(int id)
         {
             return _aRepo.GetAvatarById(id);
         }
-
-       
     }
 }

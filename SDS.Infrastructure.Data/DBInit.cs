@@ -1,13 +1,12 @@
 ﻿using SDS.Core.Domain_Service;
 using SDS.Core.Entity;
 using System;
-using System.Collections.Generic;
 using System.Security.Cryptography;
-using System.Text;
+
 
 namespace SDS.Infrastructure.Data
 {
-    public class DBInit
+    public class DBInit : IDBInit
     {
         private readonly IAvatarRepository _avatarRepository;
         public DBInit(IAvatarRepository avatarRepository)
@@ -19,13 +18,13 @@ namespace SDS.Infrastructure.Data
             Random r = new Random();
             _avatarRepository.Create(new Avatar
             {
-            Name = "Bradley",
-            Type = "Meliodas",
-            Birthday = DateTime.Now.Date,
-            SoldDate = DateTime.Now.Date,
-            Color = "blue",
-            PreviousOwner = "Lotte",
-            Price = 250
+                      Name = "Bradley",
+                      Type = "Meliodas",
+                      Birthday = DateTime.Now.Date,
+                      SoldDate = DateTime.Now.Date,
+                      Color = "blue",
+                      PreviousOwner = "Lotte",
+                      Price = 250
         });
             _avatarRepository.Create(new Avatar
         {

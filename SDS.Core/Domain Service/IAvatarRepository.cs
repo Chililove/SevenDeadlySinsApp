@@ -1,7 +1,5 @@
 ﻿using SDS.Core.Entity;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SDS.Core.Domain_Service
 {
@@ -16,7 +14,6 @@ namespace SDS.Core.Domain_Service
 
         Avatar Update(Avatar avatarUpdate);
 
-       Avatar Delete(int Id);
-       // Avatar Delete(Avatar avatar);
+        Avatar Delete(int Id);
     }
 }

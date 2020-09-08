@@ -1,19 +1,16 @@
 ﻿using SDS.Core.Application_Service;
-using SDS.Core.Domain_Service;
 using SDS.Core.Entity;
-using SDS.Infrastructure.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text;
+
 
 namespace SDS.UI
 {
     public class Printer : IPrinter
     {
         private readonly IAvatarService _avatarService;
-
 
         public Printer(IAvatarService avatarService)
         {
@@ -35,7 +32,6 @@ namespace SDS.UI
             return selection;
         }
     
-
     public void StartUI()
         {
             string[] menuItems =
@@ -84,7 +80,6 @@ namespace SDS.UI
                 Console.Clear();
 
                 selection = ShowMenu(menuItems);
-
             }
             Console.WriteLine("See you soon");
             Console.Clear();
@@ -102,12 +97,14 @@ namespace SDS.UI
             var avatars = _avatarService.GetAvatarsSortByPrice();
             PrintAvatars(avatars);
         }
+
         public void Show5Cheapest()
         {
             Console.WriteLine("Show 5 cheapest Avatars:");
             var avatars = _avatarService.GetAvatars5Cheapest();
             PrintAvatars(avatars);
         }
+
         void ListAvatars()
         {
             Console.WriteLine("Saved Avatars:");
@@ -146,9 +143,7 @@ namespace SDS.UI
             {
                 Console.WriteLine("try again");
             }
-
             _avatarService.Create(new Avatar()
-
             {
 
                 Name = name,
@@ -162,7 +157,6 @@ namespace SDS.UI
 
             }
             );
-
         }
 
         public Avatar GetAvatarById()
@@ -176,7 +170,6 @@ namespace SDS.UI
             return _avatarService.ReadById(id);
         }
 
-
         public void UpdateAvatar()
         {
             Console.WriteLine("Insert id of avatar to update: ");
@@ -187,14 +180,12 @@ namespace SDS.UI
             avatar.Name = Console.ReadLine();
             Console.WriteLine("Type: ");
             avatar.Type = Console.ReadLine();
-
             Console.WriteLine("Birthdate: ");
             DateTime newBirthday;
             while (!DateTime.TryParse(Console.ReadLine(), out newBirthday))
             {
                 Console.WriteLine("try again");
             }
-
             avatar.Birthday = newBirthday;
             Console.WriteLine("Sold Date: ");
             DateTime newSoldDate;
@@ -203,7 +194,6 @@ namespace SDS.UI
                 Console.WriteLine("try again");
             }
             avatar.SoldDate = newSoldDate;
-
             Console.WriteLine("Color: ");
             avatar.Color = Console.ReadLine();
             Console.WriteLine("Previous owner: ");
@@ -223,7 +213,6 @@ namespace SDS.UI
                 Console.WriteLine(ide.Message);
             }
         }
-
 
         public void Delete()
         {

@@ -1,8 +1,6 @@
 ﻿using SDS.Core.Domain_Service;
 using SDS.Core.Entity;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SDS.Infrastructure.Data.Repositories
 {
@@ -18,8 +16,6 @@ namespace SDS.Infrastructure.Data.Repositories
             _avatarList.Add(avatar);
             return avatar;
         }
-
-       
 
         public Avatar GetAvatarById(int Id)
         {
@@ -70,11 +66,5 @@ namespace SDS.Infrastructure.Data.Repositories
             }
             return null;
         }
-
-        /// 
-        /// Why this keeps wanting to implement from the interface? It is already on here.
-        /// 
-        /// 
-      
     }
 }
